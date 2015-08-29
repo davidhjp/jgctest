@@ -358,6 +358,8 @@ public class Const {
 	public static final int MEM_TM_READ_SET = MEM_TM_MAGIC+3;
 	public static final int MEM_TM_WRITE_SET = MEM_TM_MAGIC+4;
 	public static final int MEM_TM_READ_OR_WRITE_SET = MEM_TM_MAGIC+5;
+	public static final int RESULT_ADDR = 0;
+	public static final int DPCR_ADDR = 0;
 
 	
 }

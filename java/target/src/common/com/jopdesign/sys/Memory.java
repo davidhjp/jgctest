@@ -20,6 +20,8 @@
 
 package com.jopdesign.sys;
 
+import javax.safetycritical.Terminal;
+
 /**
  * JOP's implementation of scoped memory.
  * 
@@ -267,6 +269,7 @@ public class Memory {
 		// Now set all fields for inner and adapt this
 		inner.parent = this;
 		// check if remaining BS is at least size
+		Terminal.getTerminal().writeln("SSS "+this.endBsPtr+" "+this.allocBsPtr+" "+size);
 		if (this.endBsPtr-this.allocBsPtr+1<size) {
 			throw GC.OOMError;
 		}

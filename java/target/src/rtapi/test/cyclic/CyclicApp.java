@@ -14,11 +14,11 @@ public class CyclicApp {
 			JopSystem js = new JopSystem();
 
 			CyclicSafelet s = new CyclicSafelet();
-			term.writeln("Safelet created");
+//			term.writeln("Safelet created");
 
 			js.startCycle(s);
 
-			term.writeln("Application finished");
+//			term.writeln("Application finished");
 		}
 
 

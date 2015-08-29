@@ -3,4 +3,4 @@ set NumericStdNoWarnings 1
 view wave
 do wave.do
 #run 40us
-run 10ms
+run 100000ms
