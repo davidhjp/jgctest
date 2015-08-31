@@ -2,7 +2,11 @@ package jgc;
 import javax.realtime.*;
 import javax.safetycritical.*;
 
-public class MyTest extends CyclicExecutive implements Safelet<CyclicExecutive>{
+import jgc.micro.o;
+import jgc.micro.o1;
+import systemj.lib.Signal;
+
+public class MySimpleObject extends CyclicExecutive implements Safelet<CyclicExecutive>{
 
 	class Program extends PeriodicEventHandler{
 
@@ -10,11 +14,24 @@ public class MyTest extends CyclicExecutive implements Safelet<CyclicExecutive>{
 				StorageParameters storage, long scopeSize) {
 			super(priority, release, storage, scopeSize);
 		}
+		
+//		public Signal S1;
 
 		@Override
 		public void handleAsyncEvent() {
-			System.out.println("hello");
-			
+		    o O = null;
+		    int count = 0;
+		    /* Start timer */
+		    long t1 = System.nanoTime();
+		    for(count=0;count<2000;++count){ //@WCA loop = 1000
+		      O = new o ();
+		      O.ref = new o1(count);
+		    }
+		    long t2 = System.nanoTime();
+		    System.out.println("Time taken for simple object allocation: ");
+		    System.out.println(""+(t2-t1));
+//		    S1 = new Signal();
+//		    S1.setValue(O);
 		}
 		
 	}
@@ -55,7 +72,7 @@ public class MyTest extends CyclicExecutive implements Safelet<CyclicExecutive>{
 			return 100000;
 		}
 	public static void main (String[] args) {
-		Safelet<CyclicExecutive> m = new MyTest();
+		Safelet<CyclicExecutive> m = new MySimpleObject();
 		JopSystem js = new JopSystem();
 		js.startCycle(m);
 	}

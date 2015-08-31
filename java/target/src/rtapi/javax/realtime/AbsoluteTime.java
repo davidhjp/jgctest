@@ -142,8 +142,9 @@ public class AbsoluteTime extends HighResolutionTime {
 	@SCJAllowed
 	@SCJRestricted(maySelfSuspend = false)
 	public AbsoluteTime add(long millis, int nanos, AbsoluteTime dest) {
-		return (AbsoluteTime) super.add(millis, nanos,
-				dest == null ? new AbsoluteTime(0, 0, clock) : dest);
+		AbsoluteTime at = dest == null ? new AbsoluteTime(0, 0, clock) : dest;
+		AbsoluteTime att = (AbsoluteTime) add(millis, nanos,(HighResolutionTime)at);
+		return att ;
 	}
 	
 	/**
