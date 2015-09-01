@@ -23,7 +23,7 @@ public class MySimpleObject extends CyclicExecutive implements Safelet<CyclicExe
 		    int count = 0;
 		    /* Start timer */
 		    long t1 = System.nanoTime();
-		    for(count=0;count<2000;++count){ //@WCA loop = 1000
+		    for(count=0;count<200;++count){ //@WCA loop = 1000
 		      O = new o ();
 		      O.ref = new o1(count);
 		    }

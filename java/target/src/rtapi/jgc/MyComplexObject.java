@@ -24,8 +24,8 @@ public class MyComplexObject extends CyclicExecutive implements Safelet<CyclicEx
 			/* Start timer */
 			long t1 = System.nanoTime();
 			for(int i=0;i<205;++i){
-				objects = new o[20];
-				for(int j=0;j<20;++j){
+				objects = new o[1];
+				for(int j=0;j<1;++j){
 					o newObject = new o();
 					newObject.ref = new o1(j);
 					objects[j] = newObject;

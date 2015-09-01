@@ -549,6 +549,7 @@ qsyn:
 #		without the tools
 #
 sim: java_app
+mesim: jopy
 	make gen_mem -e ASM_SRC=jvm JVM_TYPE=SIMULATION
 	cd modelsim && make
 
@@ -824,6 +825,13 @@ test:
 
 ###### end of Makefile #######
 
+jopy:
+	cd $(TARGET)/dist/classes && jar cf ../lib/classes.jar *
+	java $(DEBUG_JOPIZER) $(TOOLS_CP) -Dmgci=false com.jopdesign.build.JOPizer \
+		-cp $(TARGET)/dist/lib/classes.jar -o $(TARGET)/dist/bin/$(JOPBIN) $(MAIN_CLASS)
+	java $(TOOLS_CP) com.jopdesign.tools.jop2dat $(TARGET)/dist/bin/$(JOPBIN)
+	cp *.dat modelsim
+	rm -f *.dat
 
 
 
